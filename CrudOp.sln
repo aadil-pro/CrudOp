@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudOp", "CrudOp\CrudOp.csproj", "{81ACE352-F969-4D04-A422-7B7AE803AD57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{735CDC79-55E8-4958-8D65-50B06D45827A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81ACE352-F969-4D04-A422-7B7AE803AD57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81ACE352-F969-4D04-A422-7B7AE803AD57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81ACE352-F969-4D04-A422-7B7AE803AD57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81ACE352-F969-4D04-A422-7B7AE803AD57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{735CDC79-55E8-4958-8D65-50B06D45827A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{735CDC79-55E8-4958-8D65-50B06D45827A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{735CDC79-55E8-4958-8D65-50B06D45827A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{735CDC79-55E8-4958-8D65-50B06D45827A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FABAF37E-F2CC-41B5-ABC7-75788F28F21D}
+	EndGlobalSection
+EndGlobal

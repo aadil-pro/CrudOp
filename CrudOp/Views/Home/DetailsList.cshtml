@@ -1,0 +1,71 @@
+﻿
+@model List<ClassLibrary.Entities.SendMoney>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
+<div>
+    <h2>
+        Money Details
+        <a href="@Url.Action("Editor","Home")" class="btn btn-primary" style="float:right;">Add Money Details</a>
+    </h2>
+
+    <div class="row">
+        @if (@Model != null && Model.Count > 0)
+        {
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            Amount to send ($)
+                        </th>
+                        <th>
+                            Amount recieved (INR)
+                        </th>
+                        <th>
+                            Senders name
+                        </th>
+                        <th>
+                            Recievers name
+                        </th>
+                        <th>
+                            Purpose
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var money in @Model)
+                    {
+                        <tr>
+                            <td>
+                                @money.AmountToSend<span>$</span>
+                            </td>
+                            <td>
+                                @money.AmountReceived<span>₹</span>
+                            </td>
+                            <td>
+                                @money.SenderName
+                            </td>
+                            <td>
+                                @money.ReceiverName
+                            </td>
+                            <td>
+                                @money.Purpose
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Editor","Home",new{Id = @money.Id })" class="btn btn-primary">Edit</a>
+                                |
+                                 <a href="@Url.Action("delete","Home",new{Id = money.Id})" class="btn btn-danger">Delete</a>
+                               
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-warning" role="alert">
+                No Details of Money Transfer! Click on to add
+            </div>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,79 @@
+﻿@model CrudOp.Models.Model
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+            
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1>Send Money Form</h1>
+                    <form asp-action="Editor" asp-controller="Home" method="post">
+                        <div class="form-group">
+                            <label asp-for="AmountToSend">Amount to send (USD):</label>
+                            <input asp-for="AmountToSend" class="form-control" required id="usd-input">
+                            <span asp-validation-for="AmountToSend" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AmountReceived">Amount received (INR):</label>
+                            <input asp-for="AmountReceived" class="form-control" readonly id="inr-input">
+                            <span asp-validation-for="AmountReceived" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SenderName">Sender name:</label>
+                            <input asp-for="SenderName" class="form-control" required>
+                            <span asp-validation-for="SenderName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ReceiverName">Receiver name:</label>
+                            <input asp-for="ReceiverName" class="form-control" required>
+                            <span asp-validation-for="ReceiverName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Purpose">Purpose:</label>
+                            <select asp-for="Purpose" class="form-control" required>
+                                <option value=""></option>
+                                <option value="Personal">Personal</option>
+                                <option value="Business">Business</option>
+                            </select>
+                            <span asp-validation-for="Purpose" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Save" />
+                    <a href="@Url.Action("DetailsList","Home")" class="btn btn-secondary">Back To Details List</a>
+                </div>  
+                    </form>
+                </div>
+
+            </div>
+        </div>
+      
+    </div>
+    </div>
+    
+
+
+<script>
+    function convertCurrency() {
+        let usd = document.getElementById("usd-input").value;
+        const xhr = new XMLHttpRequest();
+        const url = "https://api.exchangerate-api.com/v4/latest/USD";
+        xhr.open("GET", url);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                let data = JSON.parse(xhr.responseText);
+                let inr = data.rates.INR * usd;
+                document.getElementById("inr-input").value = inr.toFixed(2);
+            }
+        };
+        xhr.send();
+    }
+
+    document.getElementById("usd-input").addEventListener("input", convertCurrency);
+</script>
+
+<style type="text/css">
+    .form-group {
+        margin-top: 20px !important;
+    }
+</style>
